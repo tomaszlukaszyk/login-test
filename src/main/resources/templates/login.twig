@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+    <form name="loginForm" method="post">
+        <h2>Sign in</h2>
+
+        User Name:<br>
+        <input type="text" name="userName" required><br><br>
+
+        Password:<br>
+        <input type="password" name="pass" required><br><br><br>
+
+        <input type="submit" name="log_in" value="LOG IN">
+        <span>{{ errMessage }}</span>
+    </form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+body {
+    font-size: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form[name="loginForm"] {
+    width: 20%;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+input[type="submit"] {
+    background-color: #4B9ACC;
+    border: none;
+    color: white;
+    padding: 16px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(54, 111, 146);
+}
+
+input[type="text"], [type="password"] {
+    font-size: 20px;
+    width: 100%;
+}
+
+span {
+    color: red;
+}
