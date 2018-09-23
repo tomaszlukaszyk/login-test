@@ -1,0 +1,1 @@
+CREATE USER logintest WITH PASSWORD 'cookie';
