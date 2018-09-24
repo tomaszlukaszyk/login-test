@@ -10,6 +10,7 @@ public class App {
         HttpServer httpServer = HttpServer.create(new InetSocketAddress(8000), 0);
         httpServer.createContext("/login", new Login());
         httpServer.createContext("/static", new Static());
+        httpServer.createContext("/add_user", new AddUser());
         httpServer.setExecutor(null);
         httpServer.start();
     }

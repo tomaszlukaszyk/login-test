@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+</head>
+<body>
+    <form name="addUserForm" method="post">
+        <h2>Add new user</h2>
+
+        User Name:<br>
+        <input type="text" name="userName" required><br><br>
+
+        Password:<br>
+        <input type="password" name="pass" required><br>
+
+        <span>{{ message }}</span><br><br>
+
+        <input type="submit" name="add_user" value="ADD USER">
+    </form>
+</body>
+</html>

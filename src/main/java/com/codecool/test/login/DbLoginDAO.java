@@ -28,4 +28,18 @@ public class DbLoginDAO implements LoginDAO {
         }
         return pass;
     }
+
+    @Override
+    public boolean addUser(String login, String pass) {
+        String sql = "INSERT INTO users(login, password) VALUES (?, ?)";
+        int i = 0;
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, login);
+            statement.setString(2, pass);
+            i = statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return i == 1;
+    }
 }
