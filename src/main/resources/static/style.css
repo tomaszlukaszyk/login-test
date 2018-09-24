@@ -6,7 +6,7 @@ h1 {
     text-align: center;
 }
 
-form[name="loginForm"] {
+form[name="loginForm"], [name="addUserForm"] {
     width: 20%;
     margin: auto;
     padding: 20px;
