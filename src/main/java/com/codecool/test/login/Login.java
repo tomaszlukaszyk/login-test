@@ -5,9 +5,11 @@ import com.sun.net.httpserver.HttpHandler;
 import org.jtwig.JtwigModel;
 import org.jtwig.JtwigTemplate;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpCookie;
-import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +44,7 @@ public class Login implements HttpHandler {
             InputStreamReader isr = new InputStreamReader(httpExchange.getRequestBody(), StandardCharsets.UTF_8);
             BufferedReader br = new BufferedReader(isr);
             String formData = br.readLine();
-            Map<String, String> inputs = parseFormData(formData);
+            Map<String, String> inputs = FormDataParser.parseFormData(formData);
 
             if (inputs.containsKey("log_out")) {
                 session.remove(HttpCookie.parse(cookieStr).get(0).getValue());
@@ -90,20 +92,9 @@ public class Login implements HttpHandler {
         return template.render(model);
     }
 
-    private Map<String, String> parseFormData(String formData) throws UnsupportedEncodingException {
-        Map<String, String> map = new HashMap<>();
-        String[] pairs = formData.split("&");
-        for(String pair : pairs){
-            String[] keyValue = pair.split("=");
-            String value = URLDecoder.decode(keyValue[1], "UTF-8");
-            map.put(keyValue[0], value);
-        }
-        return map;
-    }
-
     private boolean isPasswordCorrect(Map<String, String> inputs) {
         String userName = inputs.get("userName");
-        String pass = inputs.get("pass");
+        String pass = new PasswordHasher().hashPassword(inputs.get("pass"));
         LoginDAO dao = new LoginDAOFactory().getDao();
         return pass.equals(dao.getPasswordByLogin(userName));
     }
